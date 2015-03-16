@@ -18,7 +18,7 @@
     }, this);
   };
 
-  function createVisualization(element, title, data) {
+  function createVisualization(element, title, data, baselines) {
     MG.data_graphic({
         title: title,
         // description: "",
@@ -27,23 +27,33 @@
         // Resize dynamically
         // width: 650,
         full_width: true,
-        height: 200,
+        full_height: true,
+        //height: 200,
 
         target: element,
+        linked: true,
         //x_accessor: "year",
-        //y_accessor: "sightings",
+        //y_accessor: "value",
 
         show_secondary_x_label: false,
 
+        legend: Object.getOwnPropertyNames(data),
+        legend_target: "#legend",
+
         // Tooltips require jquery, disable them
-        show_tooltips: false
+        show_tooltips: false,
+
+        animate_on_load: true,
+
+        // TODO: Add baselines-properties
+        baselines: baselines
     });
 
   }
 
   // Get data from server
   d3.json("data/data.json", function(data) {
-      
+
       var weights = new Dictionary(),
           kms = new Dictionary(),
           dateFormatter = d3.time.format("%Y-%m-%d");
@@ -60,7 +70,7 @@
         });
       });
 
-      createVisualization("#vis-km", "Viikottaiset kilometrit", kms);
+      createVisualization("#vis-km", "Kilometrit", kms, [{value: 40, label:"Norsupohje"}]);
       createVisualization("#vis-weight", "Paino", weights);
   });
 }());

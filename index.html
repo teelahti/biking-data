@@ -8,14 +8,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
     <script src="vendor/metricsgraphics.min.js"></script>
     <style>
+      #legend {
+        text-align: center;
+      }
+
       #visualizations > div {
         width: 100%;
+        min-height: 100px;
+        max-height: 250px;
+        height: 25%;
+      }
+
+      h2.mg-chart-title {
+        font-size: 1.1em;
+        text-align: left;
+        margin-bottom: 0;
       }
     </style>
 </head>
 
 <body>
 
+    <div id="legend"></div>
     <div id="visualizations">
 
         <div id="vis-km"></div>
