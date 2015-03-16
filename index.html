@@ -7,42 +7,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
     <script src="vendor/metricsgraphics.min.js"></script>
-
+    <style>
+      #visualizations > div {
+        width: 100%;
+      }
+    </style>
 </head>
 
 <body>
 
-    <h1 style="color: red;">Kesken!<h1>
+    <div id="visualizations">
 
-    <div id="vis-km" style="width: 100%;"></div>
+        <div id="vis-km"></div>
+        <div id="vis-weight" ></div>
 
-    <script>
-        d3.json("data/km.json", function(data) {
-            for (var i = 0; i < data.length; i++) {
-              data[i] = MG.convert.date(data[i], "date");
-            }
+    </div>
 
-            MG.data_graphic({
-                title: "Viikottaiset kilometrit",
-                // description: "",
-                data: data,
+    <script src="main.js"></script>
 
-                // Resize dynamically
-                // width: 650,
-                full_width: true,
-                height: 200,
-
-                target: "#vis-km",
-                //x_accessor: "year",
-                //y_accessor: "sightings",
-
-                show_secondary_x_label: false,
-
-                // Tooltips require jquery, disable them
-                show_tooltips: false
-            })
-        })
-    </script>
     <script>
     // TODO: add google analytics
     </script>
