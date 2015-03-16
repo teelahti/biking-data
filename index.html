@@ -1,12 +1,12 @@
 <html>
 <head>
-    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>Kuinka polkee?</title>
 
-    <link href='vendor/metricsgraphics.css' rel='stylesheet' type='text/css'>
+    <link href="vendor/metricsgraphics.css" rel="stylesheet" type="text/css">
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
-    <script src='vendor/metricsgraphics.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
+    <script src="vendor/metricsgraphics.min.js"></script>
 
 </head>
 
@@ -14,12 +14,12 @@
 
     <h1 style="color: red;">Kesken!<h1>
 
-    <div id='vis-km' style="width: 100%;"></div>
+    <div id="vis-km" style="width: 100%;"></div>
 
     <script>
-        d3.json('data/km.json', function(data) {
+        d3.json("data/km.json", function(data) {
             for (var i = 0; i < data.length; i++) {
-              data[i] = MG.convert.date(data[i], 'date');
+              data[i] = MG.convert.date(data[i], "date");
             }
 
             MG.data_graphic({
@@ -32,9 +32,9 @@
                 full_width: true,
                 height: 200,
 
-                target: '#vis-km',
-                //x_accessor: 'year',
-                //y_accessor: 'sightings',
+                target: "#vis-km",
+                //x_accessor: "year",
+                //y_accessor: "sightings",
 
                 show_secondary_x_label: false,
 
