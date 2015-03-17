@@ -18,7 +18,7 @@
     }, this);
   };
 
-  function createVisualization(element, title, data, baselines) {
+  function createVisualization(element, title, data, min_y, baselines) {
     MG.data_graphic({
         title: title,
         // description: "",
@@ -45,6 +45,8 @@
 
         animate_on_load: true,
 
+        min_y: min_y,
+
         // TODO: Add baselines-properties
         baselines: baselines
     });
@@ -54,8 +56,11 @@
   // Get data from server
   d3.json("data/data.json", function(data) {
 
-      var weights = new Dictionary(),
-          kms = new Dictionary(),
+      var kms = new Dictionary(),
+          weights = new Dictionary(),
+          waists = new Dictionary(),
+          thighs = new Dictionary(),
+          calfs = new Dictionary(),
           dateFormatter = d3.time.format("%Y-%m-%d");
 
       Object.getOwnPropertyNames(data).forEach(function(valdate) {
@@ -67,10 +72,16 @@
 
           kms.push(valperson, dateObject, personData[0]);
           weights.push(valperson, dateObject, personData[1]);
+          waists.push(valperson, dateObject, personData[2]);
+          thighs.push(valperson, dateObject, personData[3]);
+          calfs.push(valperson, dateObject, personData[4]);
         });
       });
 
-      createVisualization("#vis-km", "Kilometrit", kms, [{value: 40, label:"Norsupohje"}]);
-      createVisualization("#vis-weight", "Paino", weights);
+      createVisualization("#vis-km", "Kilometrit", kms);
+      createVisualization("#vis-weight", "Paino", weights, 75, [{value: 82, label:"Läski"}]);
+      createVisualization("#vis-waist", "Vyötärö", waists, 85);
+      createVisualization("#vis-thigh", "Reisi", thighs, 45);
+      createVisualization("#vis-calf", "Pohje", calfs, 34, [{value: 40, label:"Norsupohje"}]);
   });
 }());

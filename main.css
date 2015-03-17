@@ -1,0 +1,43 @@
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+}
+
+#legend {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#visualizations > div {
+  width: 50%;
+  /*min-height: 100px;
+  max-height: 250px;*/
+  height: 31%;
+  float: left;
+}
+
+h2.mg-chart-title {
+  font-family: 'Helvetica Neue Condensed','Helvetica Neue',Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: left;
+  margin-bottom: 0;
+  color: #4C474D;
+  padding-left: 25px;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  #visualizations > div {
+    width: 100%;
+    /*min-height: 100px;
+    max-height: 250px;*/
+    height: 200px;
+    float: none;
+    clear: both;
+  }
+}
