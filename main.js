@@ -32,9 +32,7 @@
 
         target: element,
         linked: true,
-        //x_accessor: "year",
-        //y_accessor: "value",
-
+        xax_format: d3.time.format("%-d.%-m"),
         show_secondary_x_label: false,
 
         legend: Object.getOwnPropertyNames(data),
@@ -47,7 +45,6 @@
 
         min_y: min_y,
 
-        // TODO: Add baselines-properties
         baselines: baselines
     });
 

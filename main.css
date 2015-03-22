@@ -1,24 +1,12 @@
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0px;
-}
-
 #legend {
   text-align: center;
-  margin-top: 10px;
 }
 
-#visualizations > div {
-  width: 50%;
+.vis {
   /*min-height: 100px;
   max-height: 250px;*/
-  height: 31%;
-  float: left;
+  height: 250px;
+  margin: 10px 0 40px 0;
 }
 
 h2.mg-chart-title {
@@ -32,12 +20,5 @@ h2.mg-chart-title {
 }
 
 @media handheld, only screen and (max-width: 767px) {
-  #visualizations > div {
-    width: 100%;
-    /*min-height: 100px;
-    max-height: 250px;*/
-    height: 200px;
-    float: none;
-    clear: both;
-  }
+
 }

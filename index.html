@@ -3,6 +3,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>Kuinka polkee?</title>
 
+    <link href="vendor/simplegrid.css" rel="stylesheet" type="text/css">
     <link href="vendor/metricsgraphics.css" rel="stylesheet" type="text/css">
     <link href="main.css" rel="stylesheet" type="text/css">
 
@@ -13,15 +14,21 @@
 
 <body>
 
-    <div id="legend"></div>
+    <div class="grid grid-pad">
+      <div id="legend"></div>
+    </div>
     <div id="visualizations">
-
-        <div id="vis-km"></div>
-        <div id="vis-weight"></div>
-        <div id="vis-waist"></div>
-        <div id="vis-thigh"></div>
-        <div id="vis-calf" ></div>
-
+      <div class="grid grid-pad">
+        <div id="vis-km" class="vis col-1-1"></div>
+      </div>
+      <div class="grid grid-pad">
+        <div id="vis-weight" class="vis col-1-2"></div>
+        <div id="vis-waist" class="vis col-1-2"></div>
+      </div>
+      <div class="grid grid-pad">
+        <div id="vis-thigh" class="vis col-1-2"></div>
+        <div id="vis-calf" class="vis col-1-2"></div>
+      </div>
     </div>
 
     <script src="main.js"></script>
