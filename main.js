@@ -9,7 +9,7 @@
       this[person] = [];
     }
 
-    this[person].push({ "date": date, "value": value})
+    this[person].push({ "date": date, "value": value});
   };
 
   Dictionary.prototype.toArray = function() {
@@ -21,17 +21,17 @@
   function createVisualization(element, title, data, min_y, baselines) {
     MG.data_graphic({
         title: title,
-        // description: "",
         data: data.toArray(),
 
         // Resize dynamically
-        // width: 650,
         full_width: true,
         full_height: true,
-        //height: 200,
+        top: 20,
 
         target: element,
         linked: true,
+        aggregate_rollover: true,
+        decimals: 2,
         xax_format: d3.time.format("%-d.%-m"),
         show_secondary_x_label: false,
 
