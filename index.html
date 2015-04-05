@@ -13,13 +13,20 @@
 </head>
 
 <body>
-
     <div class="grid grid-pad">
       <div id="legend"></div>
     </div>
     <div id="visualizations">
-      <div class="grid">
+      <div class="grid weekly">
         <div id="vis-km" class="vis col-1-1"></div>
+      </div>
+      <div class="grid cumulative">
+        <div id="vis-km-cumulative" class="vis col-1-1"></div>
+      </div>
+      <div class="grid">
+        <div class="col-1-1" style="text-align: right">
+          <label><input id="cumulative-toggle" type="checkbox" /> Näytä kumulatiivisena</label>
+        </div>
       </div>
       <hr>
       <div class="grid">

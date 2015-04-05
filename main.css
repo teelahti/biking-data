@@ -3,10 +3,20 @@
 }
 
 .vis {
-  /*min-height: 100px;
-  max-height: 250px;*/
   height: 250px;
   margin: 10px 0 40px 0;
+}
+
+.cumulative {
+  display: none;
+}
+
+.show-cumulative .weekly {
+  display: none;
+}
+
+.show-cumulative .cumulative {
+  display: default;
 }
 
 h2.mg-chart-title {
