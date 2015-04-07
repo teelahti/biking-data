@@ -66,8 +66,6 @@
            .x(function(d) { return d.person })
            .y(function(d) { return d.kms })
            .valueFormat(function (d) { return d + " km"; })
-           .width(width)
-           .height(height)
            .padAngle(.08)
            .cornerRadius(5)
            .id('kmdistribution'); // allow custom CSS for this one svg
@@ -76,8 +74,6 @@
        d3.select(element)
            .datum(kmdata)
            .transition().duration(1200)
-           .attr('width', width)
-           .attr('height', height)
            .call(chart);
 
        nv.utils.windowResize(chart.update);
@@ -89,9 +85,13 @@
   function visualizeTimeLine(element, data) {
     nv.addGraph(function() {
         var chart = nv.models.lineChart()
+            .showLegend(false)
             .useInteractiveGuideline(true)
             .x(function(d) { return d[0] })
             .y(function(d) { return d[1] })
+
+            // TODO: Give exact dates with xdomain https://nvd3-community.github.io/nvd3/
+            //.xdomain()
             .duration(300);
 
         chart.xAxis.tickFormat(function(d) {
