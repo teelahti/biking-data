@@ -88,20 +88,19 @@
 
   function visualizeTimeLine(element, data) {
     nv.addGraph(function() {
-        var chart = nv.models.cumulativeLineChart()
+        var chart = nv.models.lineChart()
             .useInteractiveGuideline(true)
             .x(function(d) { return d[0] })
             .y(function(d) { return d[1] })
-            // .color(d3.scale.category10().range())
-            // .average(function(d) { return d.mean/100; })
-            .duration(300)
-            .clipVoronoi(false);
+            .duration(300);
 
         chart.xAxis.tickFormat(function(d) {
             return d3.time.format('%-d.%-m')(new Date(d))
         });
 
-        //chart.yAxis.tickFormat(d3.format(',.1 km'));
+        chart.yAxis
+          .axisLabel('km')
+          .tickFormat(d3.format(',f'));
 
         d3.select(element)
             .datum(data.toD3Array())
