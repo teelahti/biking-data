@@ -1,0 +1,18 @@
+{
+  "name": "biking-data",
+  "version": "1.0.0",
+  "homepage": "https://github.com/teelahti/biking-data",
+  "authors": [
+    "Tero Teelahti <tero@teelahti.fi>"
+  ],
+  "description": "Show biking data for a summer.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
