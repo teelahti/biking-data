@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.vis {
-  height: 250px;
-  margin: 10px 0 40px 0;
-}
-
 .cumulative {
   display: none;
 }
@@ -19,14 +14,22 @@
   display: default;
 }
 
-h2.mg-chart-title {
-  font-family: 'Helvetica Neue Condensed','Helvetica Neue',Helvetica,Arial,sans-serif;
-  text-transform: uppercase;
-  font-size: 1em;
-  text-align: left;
-  margin-bottom: 0;
-  color: #4C474D;
-  padding-left: 25px;
+text {
+  font: 12px sans-serif;
+}
+svg {
+  display: block;
+  float: left;
+  height: 350px !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Graph-specific styles */
+.nvd3.nv-pie.nv-chart-kmdistribution .nv-pie-title {
+  opacity: 0.4;
+  fill: rgba(224, 116, 76, 0.91);
 }
 
 @media handheld, only screen and (max-width: 767px) {
