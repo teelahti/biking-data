@@ -1,4 +1,4 @@
-// TODO: Consider using module format and loader, e.g. https://github.com/ModuleLoader/es6-module-loader
+// TODO: Consider using module format and loader, e.g. systemjs
 
 function Dictionary() { }
 
