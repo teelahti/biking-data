@@ -22,9 +22,6 @@
         .map(function(elem) { return elem.kms })
         .reduce(sum);
 
-    var height = 350;
-    var width = 350;
-
     nv.addGraph(function() {
        var chart = nv.models.pieChart()
            .donut(true)
