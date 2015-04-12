@@ -1,0 +1,22 @@
+{
+  "name": "biking-data",
+  "version": "1.0.0",
+  "description": "Show biking data of a couple of guys.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teelahti/biking-data.git"
+  },
+  "author": "Tero Teelahti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/teelahti/biking-data/issues"
+  },
+  "homepage": "https://github.com/teelahti/biking-data",
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  }
+}
