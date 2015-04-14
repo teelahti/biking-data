@@ -3,7 +3,7 @@ import nv from 'nvd3';
 
 export default function timeLine(element, data) {
   nv.addGraph(function() {
-      var chart = nv.models.lineChart()
+      var chart = nv.models.stackedAreaChart()
           .showLegend(false)
           .useInteractiveGuideline(true)
           .x(d => d[0])
