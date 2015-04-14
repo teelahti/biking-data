@@ -1,0 +1,18 @@
+{
+  "name": "systemjs",
+  "devDependencies": {
+    "qunit": "~1.12.0"
+  },
+  "homepage": "https://github.com/systemjs/systemjs",
+  "version": "0.16.7",
+  "_release": "0.16.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.16.7",
+    "commit": "f4cd324888b9662d6ef2d5023b85b4ee181d5643"
+  },
+  "_source": "git://github.com/systemjs/systemjs.git",
+  "_target": "~0.16.7",
+  "_originalSource": "system.js",
+  "_direct": true
+}

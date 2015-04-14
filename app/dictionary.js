@@ -1,34 +1,32 @@
-// TODO: Consider using module format and loader, e.g. systemjs
+export default class Dictionary {
+  push(person, date, value) {
+    if(!this.hasOwnProperty(person)) {
+      this[person] = [];
+    }
 
-function Dictionary() { }
+    this[person].push({ "date": date, "value": value});
+  };
 
-Dictionary.prototype.push = function(person, date, value) {
-  if(!this.hasOwnProperty(person)) {
-    this[person] = [];
-  }
+  pushCumulative(person, date, value) {
+    var p = this[person],
+        prev = (p && p.length) ? p[p.length - 1].value : 0;
 
-  this[person].push({ "date": date, "value": value});
-};
+    this.push(person, date, prev + value);
+  };
 
-Dictionary.prototype.pushCumulative = function(person, date, value) {
-  var p = this[person],
-      prev = (p && p.length) ? p[p.length - 1].value : 0;
+  toArray() {
+    return Object.getOwnPropertyNames(this).map(function(person) {
+      return this[person];
+    }, this);
+  };
 
-  this.push(person, date, prev + value);
-};
-
-Dictionary.prototype.toArray = function() {
-  return Object.getOwnPropertyNames(this).map(function(person) {
-    return this[person];
-  }, this);
-};
-
-Dictionary.prototype.toD3Array = function() {
-  return Object.getOwnPropertyNames(this).map(function(person) {
-    return {
-      key: person,
-      values: this[person]
-        .map(function(elem) { return [elem.date, elem.value]; })
-      };
-  }, this);
-};
+  toD3Array() {
+    return Object.getOwnPropertyNames(this).map(function(person) {
+      return {
+        key: person,
+        values: this[person]
+          .map(function(elem) { return [elem.date, elem.value]; })
+        };
+    }, this);
+  };
+}
