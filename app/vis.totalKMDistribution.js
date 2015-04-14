@@ -12,10 +12,9 @@ export default function totalKMDistribution(element, data) {
     };
   });
 
-  var totalKms = kmdata.map(elem => elem.kms).reduce(sum);
+  var totalKms = kmdata.map(_ => _.kms).reduce(sum);
 
   nv.addGraph(function() {
-    // TODO: corner radius not working
      var chart = nv.models.pieChart()
          .donut(true)
          .title(totalKms + " km")
@@ -23,14 +22,10 @@ export default function totalKMDistribution(element, data) {
          .x(d => d.person)
          .y(d => d.kms )
          .valueFormat(d => { return d + " km"; })
-         .padAngle(.08)
-         .cornerRadius(5)
          .id('kmdistribution'); // allow custom CSS for this one svg
 
-     // TODO: Transition not working at the moment
      d3.select(element)
          .datum(kmdata)
-         .transition().duration(1200)
          .call(chart);
 
      nv.utils.windowResize(chart.update);
