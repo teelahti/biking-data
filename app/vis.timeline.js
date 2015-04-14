@@ -8,9 +8,8 @@ export default function timeLine(element, data) {
           .useInteractiveGuideline(true)
           .x(d => d[0])
           .y(d => d[1])
-
           // TODO: Give exact dates with xdomain https://nvd3-community.github.io/nvd3/
-          //.xdomain()
+
           .duration(300);
 
       chart.xAxis.tickFormat(d => d3.time.format('%-d.%-m')(new Date(d)));

@@ -1,9 +1,10 @@
-import Dictionary from './dictionary';
+import { Dictionary, CumulativeDictionary } from './dictionary';
 import d3 from 'd3';
 
 import visualizeTotalKMDistribution from './vis.totalKMDistribution';
 import visualizeTimeline from './vis.timeline';
 
+// TODO: Should transpile ES6 beforehand, not runtime
 // TODO: Add link graphs on rollover (follow all timeline graphs simultaneously)
 // TODO: Add baselines: 82 kg läski, 40 cm norsupohje
 
@@ -11,7 +12,7 @@ import visualizeTimeline from './vis.timeline';
 d3.json("data/data.json", function(data) {
 
     var kms = new Dictionary(),
-        kms_cumulative = new Dictionary(),
+        kms_cumulative = new CumulativeDictionary(),
         weights = new Dictionary(),
         waists = new Dictionary(),
         thighs = new Dictionary(),
@@ -31,7 +32,7 @@ d3.json("data/data.json", function(data) {
         thighs.push(valperson, dateObject, personData[3]);
         calfs.push(valperson, dateObject, personData[4]);
 
-        kms_cumulative.pushCumulative(valperson, dateObject, personData[0]);
+        kms_cumulative.push(valperson, dateObject, personData[0]);
       });
     });
 

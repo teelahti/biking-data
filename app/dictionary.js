@@ -1,17 +1,10 @@
-export default class Dictionary {
+export class Dictionary {
   push(person, date, value) {
     if(!this.hasOwnProperty(person)) {
       this[person] = [];
     }
 
     this[person].push({ date, value});
-  };
-
-  pushCumulative(person, date, value) {
-    var p = this[person],
-        prev = (p && p.length) ? p[p.length - 1].value : 0;
-
-    this.push(person, date, prev + value);
   };
 
   toArray() {
@@ -29,4 +22,14 @@ export default class Dictionary {
         };
     }, this);
   };
+}
+
+export class CumulativeDictionary extends Dictionary {
+  push(person, date, value) {
+    var p = this[person],
+        prev = (p && p.length) ? p[p.length - 1].value : 0;
+
+    super.push(person, date, prev + value);
+  };
+
 }
