@@ -1,17 +1,7 @@
-#legend {
-  text-align: center;
-}
-
-.cumulative {
-  display: none;
-}
-
-.show-cumulative .weekly {
-  display: none;
-}
-
-.show-cumulative .cumulative {
-  display: default;
+.vis h3 {
+  font-family: verdana 'sans-serif';
+  padding-left: 40px;
+  color: rgba(224, 116, 76, 0.91);
 }
 
 text {
