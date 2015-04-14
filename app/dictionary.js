@@ -4,7 +4,7 @@ export default class Dictionary {
       this[person] = [];
     }
 
-    this[person].push({ "date": date, "value": value});
+    this[person].push({ date, value});
   };
 
   pushCumulative(person, date, value) {
@@ -25,7 +25,7 @@ export default class Dictionary {
       return {
         key: person,
         values: this[person]
-          .map(function(elem) { return [elem.date, elem.value]; })
+          .map(_ => { return [_.date, _.value]; })
         };
     }, this);
   };
