@@ -1,22 +1,23 @@
 import d3 from 'd3';
 import nv from 'nvd3';
+import { tickFormat, xSelector, ySelector } from './vis';
 
-export default function timeLine(element, data) {
+export default function kmTimeline(element, data) {
   nv.addGraph(function() {
       var chart = nv.models.stackedAreaChart()
+          .options({
+            transitionDuration: 500
+           })
           .showLegend(false)
           .useInteractiveGuideline(true)
-          .x(d => d[0])
-          .y(d => d[1])
+          // BUG: Cannot give this from chart.yAxis.tickFormat
+          .yAxisTickFormat(d3.format('.0f'))
+          .x(xSelector)
+          .y(ySelector);
           // TODO: Give exact dates with xdomain https://nvd3-community.github.io/nvd3/
 
-          .duration(300);
-
-      chart.xAxis.tickFormat(d => d3.time.format('%-d.%-m')(new Date(d)));
-
-      chart.yAxis
-        .axisLabel('km')
-        .tickFormat(d3.format(',f'));
+      chart.xAxis.tickFormat(tickFormat);
+      chart.yAxis.axisLabel('km');
 
       d3.select(element)
           .datum(data.toD3Array())

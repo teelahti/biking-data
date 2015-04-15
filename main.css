@@ -1,4 +1,4 @@
-.vis h3 {
+h3 {
   font-family: verdana 'sans-serif';
   padding-left: 40px;
   color: rgba(224, 116, 76, 0.91);
@@ -14,6 +14,10 @@ svg {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.dashed {
+  stroke-dasharray: 5,5;
 }
 
 /* Graph-specific styles */

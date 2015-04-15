@@ -2,7 +2,8 @@ import { Dictionary, CumulativeDictionary } from './dictionary';
 import d3 from 'd3';
 
 import visualizeTotalKMDistribution from './vis.totalKMDistribution';
-import visualizeTimeline from './vis.timeline';
+import visualizeKMTimeline from './vis.kmtimeline';
+import { timeline } from './vis';
 
 // TODO: Should transpile ES6 beforehand, not runtime
 // TODO: Add link graphs on rollover (follow all timeline graphs simultaneously)
@@ -37,8 +38,11 @@ d3.json("data/data.json", function(data) {
     });
 
     visualizeTotalKMDistribution("#vis-total-distribution", kms);
-
-    visualizeTimeline("#vis-km", kms);
+    visualizeKMTimeline("#vis-km", kms);
+    timeline("#vis-weight", weights, "kg");
+    timeline("#vis-waist", waists, "cm");
+    timeline("#vis-thigh", thighs, "cm");
+    timeline("#vis-calf", calfs, "cm");
 
     // createVisualization("#vis-weight", "Paino", weights, 75, [{value: 82, label:"Läski"}]);
     // createVisualization("#vis-waist", "Vyötärö", waists, 85);
