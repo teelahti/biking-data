@@ -1,26 +1,29 @@
 export class Dictionary {
+  // Iterates all dictionary entries, and calls the provided function
+  // with signature fn(key, value)
+  map(fn) {
+    return Object.getOwnPropertyNames(this).map(name => fn(name, this[name]));
+  }
+
   push(person, date, value) {
     if(!this.hasOwnProperty(person)) {
       this[person] = [];
     }
 
-    this[person].push({ date, value});
+    this[person].push({ date, value });
   };
 
   toArray() {
-    return Object.getOwnPropertyNames(this).map(function(person) {
-      return this[person];
-    }, this);
+    return this.map((person, personData) => personData);
   };
 
   toD3Array() {
-    return Object.getOwnPropertyNames(this).map(function(person) {
+    return this.map((person, personData) => {
       return {
         key: person,
-        values: this[person]
-          .map(_ => { return [_.date, _.value]; })
-        };
-    }, this);
+        values: personData.map(p => [p.date, p.value])
+      };
+    });
   };
 }
 
@@ -31,5 +34,4 @@ export class CumulativeDictionary extends Dictionary {
 
     super.push(person, date, prev + value);
   };
-
 }

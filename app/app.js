@@ -17,7 +17,7 @@ function iterateProps(obj, fn) {
 
 // Get data from server
 d3.json("data/data.json", data => {
-
+  
     var kms = new Dictionary(),
         kms_cumulative = new CumulativeDictionary(),
         weights = new Dictionary(),
