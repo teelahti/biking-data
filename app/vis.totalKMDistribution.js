@@ -5,10 +5,10 @@ import nv from 'nvd3';
 export default function totalKMDistribution(element, data) {
 
   // Calculate totals
-  var kmdata = Object.getOwnPropertyNames(data).map(person => {
+  var kmdata = data.map((person, personData) => {
     return {
       person,
-      kms: data[person].map(_ => _.value).reduce(sum)
+      kms: personData.map(_ => _.value).reduce(sum)
     };
   });
 
