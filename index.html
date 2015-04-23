@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -45,7 +46,7 @@
     <script src="bower_components/system.js/dist/system.js"></script>
     <script>
       System.config({
-        // set all requires to "lib" for library code
+        // Set location of all third party libraries
         baseURL: '/bower_components/',
 
         // set "app" as an exception for our application code
@@ -54,9 +55,48 @@
           traceur: '/bower_components/traceur/traceur.min.js'
         },
 
+        // Use short names for some components that have long names
         map: {
           d3: 'd3/d3.min',
           nvd3: 'nvd3/build/nv.d3.min'
+        },
+
+        // Meta shim's global dependencies, and tells systemjs
+        // to not load e.g. nv.d3 before d3.
+        meta: {
+          'nvd3/build/nv.d3.min': {
+            format: 'global',
+            exports: 'nv',
+            deps: ['d3']
+          },
+          'd3/d3.min': {
+            format: 'global',
+            exports: 'd3'
+          }
+        },
+
+        // Add some hard coded dependencies for parallel loading.
+        // Could use deployment time bundling instead, e.g. with jspm
+        depCache: {
+          'app/app': [
+            'nvd3/build/nv.d3.min',
+            'app/dictionary',
+            'app/vis.totalKMDistribution',
+            'app/vis.kmtimeline',
+            'app/vis'
+          ],
+          'nvd3/build/nv.d3.min': ['d3/d3.min'],
+          'app/vis': ['d3/d3.min'],
+          'app/vis.totalKMDistribution': [
+            'd3/d3.min',
+            'nvd3/build/nv.d3.min',
+            'app/listoperations'
+          ],
+          'app/vis.kmtimeline': [
+            'd3/d3.min',
+            'nvd3/build/nv.d3.min',
+            'app/vis'
+          ]
         }
       });
 

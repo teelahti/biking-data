@@ -43,9 +43,4 @@ d3.json("data/data.json", function(data) {
     timeline("#vis-waist", waists, "cm");
     timeline("#vis-thigh", thighs, "cm");
     timeline("#vis-calf", calfs, "cm");
-
-    // createVisualization("#vis-weight", "Paino", weights, 75, [{value: 82, label:"Läski"}]);
-    // createVisualization("#vis-waist", "Vyötärö", waists, 85);
-    // createVisualization("#vis-thigh", "Reisi", thighs, 45);
-    // createVisualization("#vis-calf", "Pohje", calfs, 34, [{value: 40, label:"Norsupohje"}]);
 });
