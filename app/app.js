@@ -9,8 +9,14 @@ import { timeline } from './vis';
 // TODO: Add link graphs on rollover (follow all timeline graphs simultaneously)
 // TODO: Add baselines: 82 kg läski, 40 cm norsupohje
 
+function iterateProps(obj, fn) {
+  Object.getOwnPropertyNames(obj).forEach(propName => {
+    fn(propName, obj[propName]);
+  });
+}
+
 // Get data from server
-d3.json("data/data.json", function(data) {
+d3.json("data/data.json", data => {
 
     var kms = new Dictionary(),
         kms_cumulative = new CumulativeDictionary(),
@@ -20,20 +26,16 @@ d3.json("data/data.json", function(data) {
         calfs = new Dictionary(),
         dateFormatter = d3.time.format("%Y-%m-%d");
 
-    Object.getOwnPropertyNames(data).forEach(function(valdate) {
-      var dateData = data[valdate],
-          dateObject = dateFormatter.parse(valdate);
+    iterateProps(data, (dateProp, dateData) => {
+      var date = dateFormatter.parse(dateProp);
 
-      Object.getOwnPropertyNames(dateData).forEach(function(valperson) {
-        var personData = dateData[valperson];
-
-        kms.push(valperson, dateObject, personData[0]);
-        weights.push(valperson, dateObject, personData[1]);
-        waists.push(valperson, dateObject, personData[2]);
-        thighs.push(valperson, dateObject, personData[3]);
-        calfs.push(valperson, dateObject, personData[4]);
-
-        kms_cumulative.push(valperson, dateObject, personData[0]);
+      iterateProps(dateData, (personProp, person) => {
+        kms.push(personProp, date, person[0]);
+        weights.push(personProp, date, person[1]);
+        waists.push(personProp, date, person[2]);
+        thighs.push(personProp, date, person[3]);
+        calfs.push(personProp, date, person[4]);
+        kms_cumulative.push(personProp, date, person[0]);
       });
     });
 
