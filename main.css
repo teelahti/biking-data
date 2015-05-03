@@ -22,7 +22,7 @@ svg {
 
 /* Graph-specific styles */
 .nvd3.nv-pie.nv-chart-kmdistribution .nv-pie-title {
-  opacity: 0.4;
+  opacity: 0.8;
   fill: rgba(224, 116, 76, 0.91);
 }
 
