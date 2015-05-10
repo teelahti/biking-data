@@ -28,6 +28,9 @@ function cjs(loader) {
     return deps;
   }
 
+  if (typeof location != 'undefined' && location.origin)
+    var curOrigin = location.origin;
+
   var loaderInstantiate = loader.instantiate;
   loader.instantiate = function(load) {
 
@@ -48,6 +51,17 @@ function cjs(loader) {
         dirname.pop();
         dirname = dirname.join('/');
 
+        var address = load.address;
+
+        if (curOrigin && address.substr(0, curOrigin.length) === curOrigin) {
+          address = address.substr(curOrigin.length);
+          dirname = dirname.substr(curOrigin.length);
+        }
+        else if (address.substr(0, 5) == 'file:') {
+          address = address.substr(5);
+          dirname = dirname.substr(5);
+        }
+
         // if on the server, remove the "file:" part from the dirname
         if (System._nodeRequire)
           dirname = dirname.substr(5);
@@ -57,7 +71,7 @@ function cjs(loader) {
           exports: exports,
           module: module,
           require: require,
-          __filename: System._nodeRequire ? load.address.substr(5) : load.address,
+          __filename: address,
           __dirname: dirname
         };
 

@@ -362,6 +362,7 @@ function register(loader) {
     if (!entry.executingRequire) {
       for (var i = 0, l = entry.normalizedDeps.length; i < l; i++) {
         var depName = entry.normalizedDeps[i];
+        // we know we only need to link dynamic due to linking algorithm
         var depEntry = loader.defined[depName];
         if (depEntry)
           linkDynamicModule(depEntry, loader);
@@ -419,6 +420,13 @@ function register(loader) {
     entry.evaluated = true;
     entry.module.execute.call(loader.global);
   }
+
+  // override the delete method to also clear the register caches
+  var loaderDelete = loader['delete'];
+  loader['delete'] = function(name) {
+    delete moduleRecords[name];
+    return loaderDelete.call(this, name);
+  };
 
   var registerRegEx = /System\.register/;
 
@@ -502,6 +510,8 @@ function register(loader) {
 
       if (anonRegister)
         entry = anonRegister;
+      else
+        load.metadata.bundle = true;
 
       if (!entry && System.defined[load.name])
         entry = System.defined[load.name];

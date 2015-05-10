@@ -17,6 +17,7 @@ function es6(loader) {
   var nodeResolver = typeof process != 'undefined' && typeof require != 'undefined' && require.resolve;
 
   function configNodeGlobal(loader, module, nodeModule, wilcardDummy) {
+    loader.meta = loader.meta || {};
     var meta = loader.meta[module] = loader.meta[module] || {};
     meta.format = meta.format || 'global';
     if (!loader.paths[module]) {
@@ -50,8 +51,6 @@ function es6(loader) {
       else if (self.transpiler == 'babel') {
         configNodeGlobal(self, 'babel', 'babel-core/browser.js');
         configNodeGlobal(self, 'babel/external-helpers', 'babel-core/external-helpers.js');
-        configNodeGlobal(self, 'babel', 'babel/browser.js');
-        configNodeGlobal(self, 'babel/external-helpers', 'babel/external-helpers.js');
         configNodeGlobal(self, 'babel-runtime/*', 'babel-runtime', true);
       }
       firstLoad = false;

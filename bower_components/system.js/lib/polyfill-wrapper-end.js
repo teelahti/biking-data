@@ -60,7 +60,7 @@ var $__curScript, __eval;
       $__global.upgradeSystemLoader();
     }
   }
-  else if (typeof WorkerGlobalScope != 'undefined' && typeof importScripts != 'undefined') {
+  else if (typeof importScripts != 'undefined') {
     doEval = function(source) {
       try {
         eval(source);
@@ -99,4 +99,5 @@ var $__curScript, __eval;
   }
 })();
 
-})(typeof window != 'undefined' ? window : (typeof WorkerGlobalScope != 'undefined' ? self : global));
+})(typeof window != 'undefined' ? window : (typeof global != 'undefined' ? global : self),
+typeof window != 'undefined' ? 'window' : (typeof global != 'undefined' ? 'global' : 'self'));
