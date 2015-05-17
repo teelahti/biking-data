@@ -1,0 +1,14 @@
+{
+  "name": "Simple-Grid",
+  "homepage": "https://github.com/ThisIsDallas/Simple-Grid",
+  "_release": "8f89c8f03d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8f89c8f03d14e45ce5bdcdcbe11256281173cafc"
+  },
+  "_source": "https://github.com/ThisIsDallas/Simple-Grid.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/ThisIsDallas/Simple-Grid.git",
+  "_direct": true
+}
