@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import nv from 'nvd3';
+import nv from 'novus/nvd3';
 import { tickFormat, xSelector, ySelector } from './vis';
 
 export default function kmTimeline(element, data) {

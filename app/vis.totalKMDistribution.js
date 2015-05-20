@@ -1,6 +1,6 @@
 import { sum } from './listoperations';
 import d3 from 'd3';
-import nv from 'nvd3';
+import nv from 'novus/nvd3';
 
 export default function totalKMDistribution(element, data) {
 

@@ -17,6 +17,19 @@
   },
   "homepage": "https://github.com/teelahti/biking-data",
   "devDependencies": {
-    "http-server": "^0.8.0"
+    "http-server": "^0.8.0",
+    "jspm": "^0.15.6"
+  },
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "ThisIsDallas/Simple-Grid": "github:ThisIsDallas/Simple-Grid@master",
+      "d3": "github:mbostock/d3@^3.5.5",
+      "novus/nvd3": "github:novus/nvd3@^1.7.1"
+    },
+    "devDependencies": {
+      "traceur": "github:jmcriffey/bower-traceur@0.0.88",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
+    }
   }
 }
