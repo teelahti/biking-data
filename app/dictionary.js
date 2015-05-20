@@ -2,7 +2,7 @@ export class Dictionary {
   // Iterates all dictionary entries, and calls the provided function
   // with signature fn(key, value)
   map(fn) {
-    return Object.getOwnPropertyNames(this).map(name => fn(name, this[name]));
+    return Object.keys(this).map(name => fn(name, this[name]));
   }
 
   push(person, date, value) {

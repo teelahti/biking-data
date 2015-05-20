@@ -10,7 +10,7 @@ import { timeline } from './vis';
 // TODO: Add baselines: 82 kg läski, 40 cm norsupohje
 
 function iterateProps(obj, fn) {
-  Object.getOwnPropertyNames(obj).forEach(propName => {
+  Object.keys(obj).forEach(propName => {
     fn(propName, obj[propName]);
   });
 }
