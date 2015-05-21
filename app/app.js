@@ -5,7 +5,7 @@ import visualizeTotalKMDistribution from './vis.totalKMDistribution';
 import visualizeKMTimeline from './vis.kmtimeline';
 import { timeline } from './vis';
 
-// TODO: Should transpile ES6 beforehand, not runtime
+// TODO: Should transpile ES6 beforehand, not runtime. See http://mitranim.com/thoughts/next-generation-today/
 // TODO: Add link graphs on rollover (follow all timeline graphs simultaneously)
 // TODO: Add baselines: 82 kg läski, 40 cm norsupohje
 
