@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "build": "jspm bundle app/app dist/build.js --minify --inject",
-    "dev": "npm run build && http-server"
+    "dev": "npm run build && http-server",
+    "browser": "start http://localhost:8080/"
   },
   "repository": {
     "type": "git",
