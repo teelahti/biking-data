@@ -9,25 +9,25 @@ export var xSelector = d => d[0];
 export var ySelector = d => d[1];
 
 export function timeline(element, data, yLabel, yTickFormat = d3.format('.1f')) {
-  nv.addGraph(function() {
-      var chart = nv.models.lineChart()
-          .showLegend(false)
-          .useInteractiveGuideline(true)
-          .x(xSelector)
-          .y(ySelector);
+  nv.addGraph(function () {
+    var chart = nv.models.lineChart()
+      .showLegend(false)
+      .useInteractiveGuideline(true)
+      .x(xSelector)
+      .y(ySelector);
 
-      chart.xAxis.tickFormat(tickFormat);
+    chart.xAxis.tickFormat(tickFormat);
 
-      chart.yAxis
-        .axisLabel(yLabel)
-        .tickFormat(yTickFormat);
+    chart.yAxis
+      .axisLabel(yLabel)
+      .tickFormat(yTickFormat);
 
-      d3.select(element)
-          .datum(data.toD3Array())
-          .call(chart);
+    d3.select(element)
+      .datum(data.toD3Array())
+      .call(chart);
 
-      nv.utils.windowResize(chart.update);
+    nv.utils.windowResize(chart.update);
 
-      return chart;
+    return chart;
   });
 }
