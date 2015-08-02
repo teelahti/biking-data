@@ -26,12 +26,3 @@ export class Dictionary {
     });
   };
 }
-
-export class CumulativeDictionary extends Dictionary {
-  push(person, date, value) {
-    var p = this[person],
-      prev = (p && p.length) ? p[p.length - 1].value : 0;
-
-    super.push(person, date, prev + value);
-  };
-}

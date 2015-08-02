@@ -26,8 +26,8 @@
     "directories": {},
     "dependencies": {
       "ThisIsDallas/Simple-Grid": "github:ThisIsDallas/Simple-Grid@master",
-      "d3": "github:mbostock/d3@^3.5.5",
-      "novus/nvd3": "github:novus/nvd3@^1.7.1"
+      "d3": "github:mbostock/d3@^3.5.6",
+      "novus/nvd3": "github:novus/nvd3@^1.8.1"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",

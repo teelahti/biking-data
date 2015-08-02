@@ -19,7 +19,6 @@ function iterateProps(obj, fn) {
 d3.json("data/data.json", data => {
   
     var kms = new Dictionary(),
-        kms_cumulative = new CumulativeDictionary(),
         weights = new Dictionary(),
         waists = new Dictionary(),
         thighs = new Dictionary(),
@@ -35,7 +34,6 @@ d3.json("data/data.json", data => {
         waists.push(personProp, date, person[2]);
         thighs.push(personProp, date, person[3]);
         calfs.push(personProp, date, person[4]);
-        kms_cumulative.push(personProp, date, person[0]);
       });
     });
 

@@ -6,12 +6,10 @@ export default function kmTimeline(element, data) {
   nv.addGraph(function () {
     var chart = nv.models.stackedAreaChart()
       .options({
-      transitionDuration: 500
-    })
+        transitionDuration: 500
+      })
       .showLegend(false)
       .useInteractiveGuideline(true)
-    // BUG: Cannot give this from chart.yAxis.tickFormat
-      .yAxisTickFormat(d3.format('.0f'))
       .x(xSelector)
       .y(ySelector);
     // TODO: Give exact dates with xdomain https://nvd3-community.github.io/nvd3/
