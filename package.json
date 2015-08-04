@@ -6,7 +6,7 @@
   "scripts": {
     "build": "jspm bundle app/app dist/build.js --minify --inject",
     "dev": "npm run build && http-server -o",
-    "browser": "start http://localhost:8080/"
+    "browser": "opener http://localhost:8080/"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   "homepage": "https://github.com/teelahti/biking-data",
   "devDependencies": {
     "http-server": "^0.8.0",
-    "jspm": "^0.15.6"
+    "jspm": "^0.15.6",
+    "opener": "^1.4.1"
   },
   "jspm": {
     "directories": {},
