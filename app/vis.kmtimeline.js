@@ -16,6 +16,15 @@ export default function kmTimeline(element, data) {
 
     chart.xAxis.tickFormat(tickFormat);
     chart.yAxis.axisLabel('km');
+    
+    chart.interactiveLayer.tooltip.headerFormatter(d => {
+      // This is preformatted, just let pass through
+      // (without this formatter will fail, most likely a bug in nvd3)
+      return d;
+    })
+    .valueFormatter(v => {
+      return v + " km";
+    });
 
     d3.select(element)
       .datum(data.toD3Array())
