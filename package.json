@@ -1,6 +1,6 @@
 {
   "name": "biking-data",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Show biking data of a couple of guys.",
   "main": "main.js",
   "scripts": {
@@ -19,16 +19,16 @@
   },
   "homepage": "https://github.com/teelahti/biking-data",
   "devDependencies": {
-    "http-server": "^0.8.0",
-    "jspm": "^0.15.6",
+    "http-server": "^0.8.5",
+    "jspm": "^0.15.7",
     "opener": "^1.4.1"
   },
   "jspm": {
     "directories": {},
     "dependencies": {
       "ThisIsDallas/Simple-Grid": "github:ThisIsDallas/Simple-Grid@master",
-      "d3": "github:mbostock/d3@^3.5.6",
-      "novus/nvd3": "github:novus/nvd3@^1.8.1"
+      "d3": "github:mbostock/d3@^3.5.16",
+      "novus/nvd3": "github:novus/nvd3@^1.8.2"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
