@@ -15,9 +15,8 @@ function iterateProps(obj, fn) {
   });
 }
 
-// Get data from server
-d3.json("data/data.json", data => {
-  
+function populate(data) {
+
     var kms = new Dictionary(),
         weights = new Dictionary(),
         waists = new Dictionary(),
@@ -43,4 +42,9 @@ d3.json("data/data.json", data => {
     timeline("#vis-waist", waists, "cm");
     timeline("#vis-thigh", thighs, "cm");
     timeline("#vis-calf", calfs, "cm");
-});
+}
+
+var year = document.querySelector("input[name=year]:checked").id;
+
+// Get data from server
+d3.json("data/" + year + ".json", populate);

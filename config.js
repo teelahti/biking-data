@@ -3,7 +3,8 @@ System.config({
   "transpiler": "traceur",
   "paths": {
     "*": "*.js",
-    "github:*": "jspm_packages/github/*.js"
+    "github:*": "jspm_packages/github/*.js",
+    "npm:*": "jspm_packages/npm/*.js"
   },
   "bundles": {
     "dist/build": [
@@ -55,6 +56,7 @@ System.config({
 System.config({
   "map": {
     "ThisIsDallas/Simple-Grid": "github:ThisIsDallas/Simple-Grid@master",
+    "css-toggle-switch": "npm:css-toggle-switch@4.0.2",
     "d3": "github:mbostock/d3@3.5.16",
     "novus/nvd3": "github:novus/nvd3@1.8.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
