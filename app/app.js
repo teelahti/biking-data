@@ -44,7 +44,26 @@ function populate(data) {
     timeline("#vis-calf", calfs, "cm");
 }
 
-var year = document.querySelector("input[name=year]:checked").id;
+function selectYear() {
+    console.log("Selecting year", this.id)
 
-// Get data from server
-d3.json("data/" + year + ".json", populate);
+    // TODO: Add hash into url
+
+    // Get data from server
+    d3.json("data/" + this.id + ".json", populate);
+}
+
+// Attach year change handler
+var yearSelectors = document.querySelectorAll("input[name=year]");
+
+for (var i = 0; i < yearSelectors.length; ++i) {
+    var item = yearSelectors[i];
+    item.addEventListener("click", selectYear)
+}
+
+// Select year - in order of priority:
+// 1) One defined in the URL
+// 2) The one that has been marked checked
+document.querySelector("input[name=year]:checked").click();
+
+
