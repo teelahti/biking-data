@@ -16,12 +16,9 @@ export default function kmTimeline(element, data) {
 
     chart.xAxis.tickFormat(tickFormat);
     chart.yAxis.axisLabel('km');
-    
-    chart.interactiveLayer.tooltip.headerFormatter(d => {
-      // This is preformatted, just let pass through
-      // (without this formatter will fail, most likely a bug in nvd3)
-      return d;
-    })
+
+    chart.interactiveLayer.tooltip
+    .headerFormatter(d => tickFormat(d))
     .valueFormatter(v => {
       return v + " km";
     });
