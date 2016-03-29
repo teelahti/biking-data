@@ -45,25 +45,28 @@ function populate(data) {
 }
 
 function selectYear() {
-    console.log("Selecting year", this.id)
-
-    // TODO: Add hash into url
-
-    // Get data from server
+    window.location.hash = this.id;
     d3.json("data/" + this.id + ".json", populate);
 }
 
 // Attach year change handler
-var yearSelectors = document.querySelectorAll("input[name=year]");
+var years = document.querySelectorAll("input[name=year]");
 
-for (var i = 0; i < yearSelectors.length; ++i) {
-    var item = yearSelectors[i];
-    item.addEventListener("click", selectYear)
+for (var i = 0; i < years.length; ++i) {
+    years[i].addEventListener("click", selectYear)
 }
 
 // Select year - in order of priority:
 // 1) One defined in the URL
 // 2) The one that has been marked checked
-document.querySelector("input[name=year]:checked").click();
+var hashYear = window.location.hash.substring(1)
+var sel = document.querySelector("input[name=year][id='" + hashYear +  "']")
+if (!sel) {
+    sel = document.querySelector("input[name=year]:checked");
+}
+
+sel.click();
+
+
 
 
