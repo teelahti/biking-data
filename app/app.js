@@ -4,6 +4,7 @@ import d3 from 'd3';
 import visualizeTotalKMDistribution from './vis.totalKMDistribution';
 import visualizeKMTimeline from './vis.kmtimeline';
 import { timeline } from './vis';
+import sheetrock from 'sheetrock';
 
 // TODO: Should transpile ES6 beforehand, not runtime. See http://mitranim.com/thoughts/next-generation-today/
 // TODO: Add link graphs on rollover (follow all timeline graphs simultaneously)
@@ -22,7 +23,7 @@ function populate(data) {
         waists = new Dictionary(),
         thighs = new Dictionary(),
         calfs = new Dictionary(),
-        dateFormatter = d3.time.format("%Y-%m-%d");
+        dateFormatter = d3.time.format("%m/%d/%Y");
 
     iterateProps(data, (dateProp, dateData) => {
       var date = dateFormatter.parse(dateProp);
@@ -44,9 +45,60 @@ function populate(data) {
     timeline("#vis-calf", calfs, "cm");
 }
 
+// Populate from google sheet
+function populateFromSheet(response) {
+
+    let sheetPerson = function(p) {
+        return [
+            parseFloat(p[0]),  // KM
+            parseFloat(p[1]),  // Weight
+            parseFloat(p[2]),  // Stomach
+            parseFloat(p[3]),  // Thigh
+            parseFloat(p[4])   // Calfs
+        ];
+    };
+
+    let data = {};
+
+    for (let i = 1; i < response.rows.length; i++) {
+
+        let r = response.rows[i].cellsArray;
+
+        // Could use names in response.rows[i].cells instead
+        data[r[0]] = {
+            "A": sheetPerson(r.slice(1, 6)),
+            "J": sheetPerson(r.slice(6, 11)),
+            "T": sheetPerson(r.slice(11, 16)),
+            "R": sheetPerson(r.slice(16, 21))
+        };
+    }
+
+    populate(data);
+}
+
+var dataCache = {}
+
 function selectYear() {
-    window.location.hash = this.id;
-    d3.json("data/" + this.id + ".json", populate);
+    let year = this.id;
+    window.location.hash = year;
+
+    if (!dataCache[year]) {
+        sheetrock({
+            url: this.dataset.sheet,
+            // If needed, "where"" and "order by"" etc. are available
+            query: "select A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U",
+            callback: function(error, options, response) {
+                if (!error) {
+                    dataCache[year] = response;
+                    populateFromSheet(response);
+                }
+            }
+        });
+    }
+    else {
+        populateFromSheet(dataCache[year]);
+    }
+
 }
 
 // Attach year change handler
@@ -66,6 +118,8 @@ if (!sel) {
 }
 
 sel.click();
+
+
 
 
 

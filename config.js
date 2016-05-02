@@ -21,6 +21,12 @@ System.config({
     ],
     "dist/build.js": [
       "app/app.js",
+      "npm:sheetrock@1.0.1.js",
+      "npm:sheetrock@1.0.1/src/sheetrock.js",
+      "github:jspm/nodelibs-process@0.1.2.js",
+      "github:jspm/nodelibs-process@0.1.2/index.js",
+      "npm:process@0.11.2.js",
+      "npm:process@0.11.2/browser.js",
       "app/vis.js",
       "github:mbostock/d3@3.5.16.js",
       "github:mbostock/d3@3.5.16/d3.js",
