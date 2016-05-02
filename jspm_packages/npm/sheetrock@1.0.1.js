@@ -1,0 +1,1 @@
+module.exports = require("npm:sheetrock@1.0.1/src/sheetrock.js");

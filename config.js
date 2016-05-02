@@ -1,12 +1,12 @@
 System.config({
-  "baseURL": "/",
-  "transpiler": "traceur",
-  "paths": {
-    "*": "*.js",
-    "github:*": "jspm_packages/github/*.js",
-    "npm:*": "jspm_packages/npm/*.js"
+  baseURL: "/",
+  defaultJSExtensions: true,
+  transpiler: "traceur",
+  paths: {
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   },
-  "bundles": {
+  bundles: {
     "dist/build": [
       "app/dictionary",
       "github:mbostock/d3@3.5.16/d3",
@@ -18,12 +18,22 @@ System.config({
       "app/vis.kmtimeline",
       "app/vis.totalKMDistribution",
       "app/app"
+    ],
+    "dist/build.js": [
+      "app/app.js",
+      "app/vis.js",
+      "github:mbostock/d3@3.5.16.js",
+      "github:mbostock/d3@3.5.16/d3.js",
+      "app/vis.kmtimeline.js",
+      "github:novus/nvd3@1.8.2.js",
+      "github:novus/nvd3@1.8.2/build/nv.d3.js",
+      "app/vis.totalKMDistribution.js",
+      "app/listoperations.js",
+      "app/dictionary.js"
     ]
-  }
-});
+  },
 
-System.config({
-  "depCache": {
+  depCache: {
     "app/vis": [
       "github:mbostock/d3@3.5.16"
     ],
@@ -50,17 +60,40 @@ System.config({
       "app/vis.kmtimeline",
       "app/vis"
     ]
-  }
-});
+  },
 
-System.config({
-  "map": {
+  map: {
     "ThisIsDallas/Simple-Grid": "github:ThisIsDallas/Simple-Grid@master",
     "css-toggle-switch": "npm:css-toggle-switch@4.0.2",
     "d3": "github:mbostock/d3@3.5.16",
     "novus/nvd3": "github:novus/nvd3@1.8.2",
-    "traceur": "github:jmcriffey/bower-traceur@0.0.88",
-    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
+    "sheetrock": "npm:sheetrock@1.0.1",
+    "traceur": "github:jmcriffey/bower-traceur@0.0.93",
+    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.93",
+    "github:jspm/nodelibs-assert@0.1.0": {
+      "assert": "npm:assert@1.3.0"
+    },
+    "github:jspm/nodelibs-process@0.1.2": {
+      "process": "npm:process@0.11.2"
+    },
+    "github:jspm/nodelibs-util@0.1.0": {
+      "util": "npm:util@0.10.3"
+    },
+    "npm:assert@1.3.0": {
+      "util": "npm:util@0.10.3"
+    },
+    "npm:inherits@2.0.1": {
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:process@0.11.2": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0"
+    },
+    "npm:sheetrock@1.0.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:util@0.10.3": {
+      "inherits": "npm:inherits@2.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    }
   }
 });
-
