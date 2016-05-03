@@ -47,31 +47,38 @@ function populate(data) {
 
 // Populate from google sheet
 function populateFromSheet(response) {
+    let parse = (s, defaultValue) => {
+        return isNaN(parseFloat(s)) ? defaultValue : parseFloat(s);
+    };
 
-    let sheetPerson = function(p) {
+    let sheetPerson = function(p, prev) {
         return [
-            parseFloat(p[0]),  // KM
-            parseFloat(p[1]),  // Weight
-            parseFloat(p[2]),  // Stomach
-            parseFloat(p[3]),  // Thigh
-            parseFloat(p[4])   // Calfs
+            parse(p[0], 0),        // KM
+            parse(p[1], prev[1]),  // Weight
+            parse(p[2], prev[2]),  // Stomach
+            parse(p[3], prev[3]),  // Thigh
+            parse(p[4], prev[4])   // Calfs
         ];
     };
 
     let data = {};
+    let previous = {"A": [0,0,0,0,0], "J": [0,0,0,0,0], "T": [0,0,0,0,0], "R": [0,0,0,0,0]};
 
-    for (let i = 1; i < response.rows.length; i++) {
+    response.rows
+        .slice(1)
+        .map(row => row.cellsArray)
+        .forEach(c => {
+            // Could use names in response.rows[i].cells instead
+            let dateData = {
+                "A": sheetPerson(c.slice(1, 6), previous.A),
+                "J": sheetPerson(c.slice(6, 11), previous.J),
+                "T": sheetPerson(c.slice(11, 16), previous.T),
+                "R": sheetPerson(c.slice(16, 21), previous.R)
+            };
+            data[c[0]] = dateData;
 
-        let r = response.rows[i].cellsArray;
-
-        // Could use names in response.rows[i].cells instead
-        data[r[0]] = {
-            "A": sheetPerson(r.slice(1, 6)),
-            "J": sheetPerson(r.slice(6, 11)),
-            "T": sheetPerson(r.slice(11, 16)),
-            "R": sheetPerson(r.slice(16, 21))
-        };
-    }
+            previous = dateData;
+    })
 
     populate(data);
 }
