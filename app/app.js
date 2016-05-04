@@ -62,7 +62,7 @@ function populateFromSheet(response) {
     };
 
     let data = {};
-    let previous = {"A": [0,0,0,0,0], "J": [0,0,0,0,0], "T": [0,0,0,0,0], "R": [0,0,0,0,0]};
+    let previous = {"A": [], "J": [], "T": [], "R": []};
 
     response.rows
         .slice(1)
